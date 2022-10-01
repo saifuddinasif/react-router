@@ -17,25 +17,27 @@ const Navbar = () => {
     const [open, setOpen] = useState(false);
 
     return (
+        <nav>
         <div>
  {
-    open ?   <XMarkIcon onClick={() => setOpen(!open)} className="h-6 w-6 text-blue-500"/>
+    open ?   <XMarkIcon onClick={() => setOpen(!open)} className="h-6 w-6 text-blue-500  md:hidden"/>
 
-    : <Bars3Icon onClick={() => setOpen(!open)} className="h-6 w-6 text-blue-500"/>
+    : <Bars3Icon onClick={() => setOpen(!open)} className="h-6 w-6 text-blue-500 md:hidden"/>
  }
 
             
-
+</div>
              
             <nav>
           
-                <ul className='md:flex  justify-center' >
+                <ul className={`md:flex justify-center absolute duration-500 ease-in ${open ? 'top-4': 'top-[-120px]' }`} >
                     {
                         routes.map(route => <Link key={route.id} route={route} ></Link> )
                     }
                 </ul>
             </nav>
-        </div>
+            </nav>
+        
     );
 };
 
